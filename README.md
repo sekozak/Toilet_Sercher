@@ -5,8 +5,8 @@ Topic:
  - Toilet searcher
 
 Technology:
- - Oracle database
- - Django
+ - backend: Spring (Java)
+ - frontend: Angular (TypeScript)
 
 Description:
  - Web application for finding and reporting public toilets.
