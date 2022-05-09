@@ -30,49 +30,32 @@
           <label for="street">Street</label>
         </div>
 
-        <!--<div class="form-group">
-          <input type="text" class="form-control" id="ingredients" placeholder=" "
+        <div class="form-group">
+          <input type="city" class="form-control" id="city" placeholder=" "
                   required
-                  [(ngModel)]="model.ingredients" name="ingredients"
-                  #ingredients="ngModel"
+                  [(ngModel)]="model.adress.city" name="city"
+                  #city="ngModel"
                   pattern="[a-zA-Z ]*">
-          <label for="ingredients">Lista składnikow</label>
+          <label for="city">City</label>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" id="output" placeholder=" "
+          <input type="text" class="form-control" id="lat" placeholder=" "
                   required
-                  [(ngModel)]="model.output" name="output"
-                  #output="ngModel"
+                  [(ngModel)]="model.coordinates.lat" name="lat"
+                  #lat="ngModel"
                   pattern="([1-9]|[1-9][0-9])">
-          <label for="output">Przepustowosc</label>
+          <label for="lat">Lat</label>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" id="price" placeholder=" "
+          <input type="lng" class="form-control" id="lng" placeholder=" "
                   required
-                  [(ngModel)]="model.price" name="price"
-                  #price="ngModel"
-                  pattern="([2-9]|[1-9][0-9]{1,2}|1000)" >
-          <label for="price">Cena</label>
+                  [(ngModel)]="model.coordinates.lng" name="lng"
+                  #lng="ngModel"
+                  pattern="([1-9]|[1-9][0-9])" >
+          <label for="lng">Lng</label>
         </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="dercription" placeholder=" "
-                  required
-                  [(ngModel)]="model.description" name="dercription"
-                  #dercription="ngModel"
-                  pattern="[a-zA-Z ]*">
-          <label for="description">Opis</label>
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="link" placeholder=" "
-                  required
-                  [(ngModel)]="str" name="link"
-                  #link="ngModel">
-          <label for="link">Link do zdj</label>
-        </div> -->
 
         <button type="button" class="btn btn-default" [disabled]="!heroForm.form.valid" (click)="senditem(); newHero(); heroForm.reset()">Dodaj</button>
       </form>

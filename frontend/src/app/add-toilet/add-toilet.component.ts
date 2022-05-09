@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-add-toilet',
@@ -17,15 +18,11 @@ export class AddToiletComponent implements OnInit {
       city : ''
     },
     description : '',
-    reviews : [{
-      username : '',
-      body : '',
-      date : new Date()
-    }]
+    reviews : []
   };
   str='';
 
-  constructor() { }
+  constructor(private toiletService : StorageService) { }
 
   ngOnInit(): void {
   }
@@ -42,16 +39,13 @@ export class AddToiletComponent implements OnInit {
         city : ''
       },
       description : '',
-      reviews : [{
-        username : '',
-        body : '',
-        date : new Date()
-      }]
+      reviews : []
     };
   }
 
   senditem() {
-
+    //this.toiletService.push(this.model);
+    this.newHero();
   }
 
 }
