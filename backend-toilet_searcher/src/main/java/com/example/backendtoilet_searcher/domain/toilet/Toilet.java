@@ -21,7 +21,6 @@ public class Toilet {
 
     @Id
     private String id;
-
     private String name;
     private Coordinates coordinates;
     private Address address;
