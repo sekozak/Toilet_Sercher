@@ -1,0 +1,44 @@
+#card{
+    display: grid;
+    grid-template-columns: 30% 45% 10% 15%;
+    width: 70vw;
+    min-height: 140px;
+    background-color: rgba(241, 241, 241, 0.171);
+    backdrop-filter: blur(3px);
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    align-items: center;
+    color: white;
+    border-radius: 30px;
+    overflow: hidden;
+}
+@media (max-width: 900px) {
+    #card{
+        width: 50vw;
+        grid-template-columns: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+p{
+    cursor: default;
+    padding: 20px;
+}
+
+button{
+    background-color: rgb(31, 30, 30);
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+.plus, .minus{
+    width: 30px;
+}
+
+img{
+    width: 200px;
+    display: block;
+}

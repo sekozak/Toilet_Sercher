@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="mainGrid">
+        <div class="leftGrid" [ngClass]="{'roll':menuOpen}">
+            <div class="menu-btn">
+                <div class="menu-btn__burger" [ngClass]="{'open':menuOpen}"></div>
+                <button (click)="toogle()" id="hamburgerBtn"> BTN </button>
+            </div>
+            <nav>
+                <div class="Menu">
+                    <a routerLink="/map" routerLinkActive="active"><span class="span"></span>MAP</a>
+                    <a routerLink="/menu" routerLinkActive="active"><span class="span"></span>TOILET LIST</a>
+                    <a routerLink="/add-toilet" routerLinkActive="active"><span class="span"></span>NEW TOILET</a>
+                </div>
+            </nav>
+        </div> 
+        <div class="test">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<footer>© 2022 Copyright</footer>
