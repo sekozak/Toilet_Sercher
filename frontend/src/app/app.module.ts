@@ -17,6 +17,7 @@ import { MapComponent } from './map/map.component';
 import { ToiletsComponent } from './toilets/toilets.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { AddToiletComponent } from './add-toilet/add-toilet.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -35,6 +36,7 @@ import { AddToiletComponent } from './add-toilet/add-toilet.component';
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
