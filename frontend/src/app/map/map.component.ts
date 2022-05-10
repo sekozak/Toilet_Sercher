@@ -39,8 +39,14 @@ export class MapComponent implements OnInit {
         accessToken: 'pk.eyJ1IjoiYmlib2xpbmlvIiwiYSI6ImNsMnoxa3l5bDBtN3UzYnNiaDdmMXB6OWIifQ.pdKxhUVl6or3lv8RYmLCJQ'
       }).addTo(map);
 
+      let redIcon = L.icon({
+        iconUrl: "/assets/red.png",
+        iconSize:     [25, 35], // size of the icon
+        iconAnchor:   [10, 29], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -29] // point from which the popup should open relative to the iconAnchor
+      });
 
-      let marker = L.marker(gps).addTo(map); //markery
+      let marker = L.marker(gps,{icon: redIcon}).addTo(map); //markery
       let marke2r = L.marker([50.0792, 19.949]).on('click', onClick);
       let marke3r = L.marker([50.0592, 19.999]).on('click', onClick);
       marke2r.addTo(map);
