@@ -11,11 +11,11 @@ declare const L: any;
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-
-  constructor() { }
-
-
   title = 'sks';
+
+  constructor() {}
+
+
   ngOnInit() {
     if(!navigator.geolocation) {
       console.log('location is not supported');
@@ -24,6 +24,7 @@ export class MapComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
       const gps = [coords.latitude, coords.longitude];
+
       console.log(
         'lat: ${position.coords.latitude}, lng: ${position.coords.longitude}'
       );
@@ -38,34 +39,37 @@ export class MapComponent implements OnInit {
         accessToken: 'pk.eyJ1IjoiYmlib2xpbmlvIiwiYSI6ImNsMnoxa3l5bDBtN3UzYnNiaDdmMXB6OWIifQ.pdKxhUVl6or3lv8RYmLCJQ'
       }).addTo(map);
 
-      L.Routing.control({
-        router: L.Routing.osrmv1({
-          serviceUrl: `http://router.project-osrm.org/route/v1/`
-        }),
-        showAlternatives: true,
-        lineOptions: {styles: [{color: '#242c81', weight: 7}]},
-        fitSelectedRoutes: false,
-        altLineOptions: {styles: [{color: '#ed6852', weight: 7}]},
-        routeWhileDragging: true,
-        waypoints: [
-          L.latLng(gps),
-          //L.latLng(gps),
-          //L.latLng(57.6792, 11.949), //tu trzeba zrobić tak żeby no wiadomo co
-        ]
-      }).addTo(map);
 
-      // let redIcon = L.icon({
-      //   iconUrl: "/assets/red.png",
-      //   iconSize:     [20, 29], // size of the icon
-      //   iconAnchor:   [10, 29], // point of the icon which will correspond to marker's location
-      //   popupAnchor:  [0, -29] // point from which the popup should open relative to the iconAnchor
-      // });
       let marker = L.marker(gps).addTo(map); //markery
-      let marke2r = L.marker([50.0792, 19.949]).addTo(map);
-      marke2r.
-      // map.on('click', (i:LeafletMouseEvent)=>{
-      //   let marker3 = L.marker(i.latlng).addTo(map); 
-      // })
+      let marke2r = L.marker([50.0792, 19.949]).on('click', onClick);
+      let marke3r = L.marker([50.0592, 19.999]).on('click', onClick);
+      marke2r.addTo(map);
+      marke3r.addTo(map);
+      // let markerDB =  L.marker([t.lat, t.lng]).on('click', onClick);
+      // markerDB.addTo(map);  
+
+      let route: any;
+      function onClick(e: { latlng: any; }){
+          if(route!=null) {map.removeControl(route);}
+          route = L.Routing.control({
+            router: L.Routing.osrmv1({
+              serviceUrl: `http://router.project-osrm.org/route/v1/`
+            }),
+            showAlternatives: true,
+            lineOptions: {styles: [{color: '#242c81', weight: 7}]},
+            fitSelectedRoutes: false,
+            altLineOptions: {styles: [{color: '#ed6852', weight: 7}]},
+            routeWhileDragging: false,
+            waypoints: [
+              L.latLng(gps),
+              L.latLng(e.latlng)
+            ]
+          }).addTo(map);
+      }
+      map.on('click', (i:LeafletMouseEvent)=>{
+        map.removeControl(route);
+      })
+
       marker.bindPopup('<b>You!</>').openPopup();
     });
     this.watchPosition();
