@@ -5,6 +5,7 @@ Topic:
  - Toilet searcher
 
 Technology:
+ - database: Atlas (MongoDb)
  - backend: Spring (Java)
  - frontend: Angular (TypeScript)
 
