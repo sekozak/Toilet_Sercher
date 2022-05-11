@@ -15,7 +15,7 @@ export class StorageService{
   }
 
   getToilets() : Observable<Toilet[]>{
-    return this.http.get<Toilet[]>("http://localhost:8080/toilet");
+    return this.http.get<Toilet[]>("http://localhost:4200/toilet");
   }
 
   

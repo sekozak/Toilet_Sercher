@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Toilet } from '../toilet';
 import { StorageService } from '../storage.service';
+import { Toilet } from '../toilet';
 
 @Component({
   selector: 'app-toilets',
@@ -8,24 +8,7 @@ import { StorageService } from '../storage.service';
   styleUrls: ['./toilets.component.css']
 })
 export class ToiletsComponent implements OnInit {
-  // public toiletList:Toilet[]=[{
-  //   name : 'bania',
-  //   coordinates : {
-  //     lat : 12,
-  //     lng : 12
-  //   },
-  //   adress : {
-  //     street : 'szewska',
-  //     city : 'krk'
-  //   },
-  //   description : 'parter, na koncu korytarza',
-  //   reviews : [{
-  //     username : 'kuba',
-  //     body : 'duze kolejki',
-  //     date : new Date()
-  //   }]
-  // }];
-  public toiletList : Toilet[] = []
+  // public toiletList : Toilet[] = []
   
   constructor(private toiletService : StorageService) { 
   
@@ -36,5 +19,48 @@ export class ToiletsComponent implements OnInit {
       this.toiletList = data;
     })
   }
+
+
+  public toiletList:Toilet[]=[{
+    id : 'fgvdgsd77',
+    name : 'bania',
+    coordinates : {
+      lat : 12,
+      lng : 12
+    },
+    adress : {
+      street : 'szewska',
+      city : 'krk'
+    },
+    description : 'parter, na koncu korytarza',
+    reviews : [{
+      username : 'kuba',
+      body : 'duze kolejki',
+      date : new Date()
+    }]
+  },
+  {
+    id : '77fgvdgsd',
+    name : 'bania2',
+    coordinates : {
+      lat : 12,
+      lng : 12
+    },
+    adress : {
+      street : 'szewska',
+      city : 'krk'
+    },
+    description : 'parter, na koncu korytarza',
+    reviews : [{
+      username : 'kubus',
+      body : 'duze kolejki',
+      date : new Date()
+    },
+    {
+      username : 'marcin',
+      body : 'masno ni',
+      date : new Date()
+    }]
+  }];
 
 }
