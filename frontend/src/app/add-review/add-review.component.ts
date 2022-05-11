@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Review } from '../review';
-import { ReviewListComponent } from '../review-list/review-list.component';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StorageService } from '../storage.service';
 import { Toilet } from '../toilet';
 
 @Component({
@@ -9,9 +9,11 @@ import { Toilet } from '../toilet';
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
-  @Input() card:Toilet | undefined;
+  id='';
 
-  constructor() { }
+  constructor(private router:ActivatedRoute, private toiletService : StorageService) {
+    this.id=this.router.snapshot.params['id'];
+   }
 
   ngOnInit(): void {
   }

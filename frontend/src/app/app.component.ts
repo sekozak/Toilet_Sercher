@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageService } from './storage.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,8 @@ import { StorageService } from './storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
 
-
-  constructor(private storage:StorageService){
-
-  }
-
+  constructor(private storage:StorageService){}
 
   menuOpen = false;
   toogle(){
@@ -25,5 +19,7 @@ export class AppComponent {
       this.menuOpen = false;
     }
   }
+
+
 
 }

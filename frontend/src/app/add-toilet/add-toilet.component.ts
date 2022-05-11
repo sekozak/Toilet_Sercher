@@ -10,8 +10,8 @@ export class AddToiletComponent implements OnInit {
   model = {
     name : '',
     coordinates : {
-      lat : 0,
-      lng : 0
+      lat : null,
+      lng : null
     },
     adress : {
       street : '',
@@ -31,8 +31,8 @@ export class AddToiletComponent implements OnInit {
     this.model = {
       name : '',
       coordinates : {
-        lat : 0,
-        lng : 0
+        lat : null,
+        lng : null
       },
       adress : {
         street : '',

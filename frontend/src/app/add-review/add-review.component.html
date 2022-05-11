@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>New Review</h1>
+  <h1>New Review id: {{id}}</h1>
   <form #heroForm="ngForm">
 
     <div class="form-group">
@@ -8,7 +8,7 @@
              [(ngModel)]="model.username" name="username"
              #username="ngModel"
              pattern="[a-zA-Z ]*">
-             <label class="label_username" for="usernamek">Username</label>
+             <label class="label_username" for="username">Username</label>
       <div [hidden]="username.valid || username.pristine"
         class="alert alert-danger">
         Username jest wymagany

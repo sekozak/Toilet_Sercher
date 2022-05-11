@@ -11,9 +11,6 @@ import { StorageService } from '../storage.service';
 
 export class ToiletComponent implements OnInit {
   @Input() info:any;
-  @Input() ix=0;
-
-
 
 
   constructor(private storage:StorageService, private router:Router){

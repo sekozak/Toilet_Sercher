@@ -28,14 +28,15 @@ p{
     padding: 20px;
 }
 
+a{
+    width: fit-content;
+}
+
 button{
     background-color: rgb(31, 30, 30);
     color: white;
     padding: 5px;
     cursor: pointer;
-}
-.plus, .minus{
-    width: 30px;
 }
 
 img{
