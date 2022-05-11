@@ -3,6 +3,7 @@ package com.example.backendtoilet_searcher.domain.toilet;
 import com.example.backendtoilet_searcher.api.toilet.ToiletRequestDTO;
 import com.example.backendtoilet_searcher.common.exception.AlreadyExistsException;
 import com.example.backendtoilet_searcher.common.exception.NotFoundException;
+import com.example.backendtoilet_searcher.domain.review.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -21,12 +22,7 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 @Service
 @RequiredArgsConstructor
 public class ToiletService{
-    private ToiletRepository toiletRepository;
-
-    @Autowired
-    public ToiletService(ToiletRepository toiletRepository) {
-        this.toiletRepository = toiletRepository;
-    }
+    private final ToiletRepository toiletRepository;
 
     public List<Toilet> findAllToilets(){
             return toiletRepository.findAll();
@@ -59,5 +55,10 @@ public class ToiletService{
         }else{
             return this.toiletRepository.insert(toilet);
         }
+//        return this.toiletRepository.insert(toilet);
+    }
+
+    public Toilet updateToilet(Toilet toilet){
+        return this.toiletRepository.save(toilet);
     }
 }

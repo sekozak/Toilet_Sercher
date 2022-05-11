@@ -8,7 +8,9 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -27,4 +29,8 @@ public class Toilet {
     private String description;
     private List<Review> reviews;
     private List<Star> stars;
+
+    public void addReviewToToilet(Review review){
+        this.reviews.add(review);
+    }
 }

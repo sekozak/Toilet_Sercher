@@ -5,6 +5,7 @@ import com.example.backendtoilet_searcher.domain.toilet.Toilet;
 import com.example.backendtoilet_searcher.domain.toilet.ToiletService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,14 +14,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ReviewService {
-    private ReviewRepository reviewRepository;
-    private ToiletService toiletService;
-
-    @Autowired
-    public ReviewService(ReviewRepository reviewRepository, ToiletService toiletService) {
-        this.reviewRepository = reviewRepository;
-        this.toiletService = toiletService;
-    }
+    private final ReviewRepository reviewRepository;
+    private final ToiletService toiletService;
 
     public List<Review> getReviews(){
         return this.reviewRepository.findAll();
@@ -35,7 +30,11 @@ public class ReviewService {
                 .description(reviewRequest.getDescription())
                 .build();
 
-        return this.reviewRepository.insert(review);
+        return reviewRepository.insert(review);
+    }
+
+    public void deleteReviews(){
+        this.reviewRepository.deleteAll();
     }
 
 
