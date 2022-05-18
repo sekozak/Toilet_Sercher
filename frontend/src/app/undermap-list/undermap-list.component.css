@@ -1,0 +1,16 @@
+*{
+    color: white;
+}
+
+h5{
+    height: 90px;
+    line-height: 90px
+}
+
+.track{
+    height: 90px;
+    line-height: 90px;
+     cursor: pointer;
+     user-select: none;
+     font-size: 50px;
+}

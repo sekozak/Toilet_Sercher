@@ -10,15 +10,15 @@ export class AddToiletComponent implements OnInit {
   model = {
     name : '',
     coordinates : {
-      lat : null,
-      lng : null
+      lat : 0,
+      lng : 0
     },
     adress : {
       street : '',
       city : ''
     },
     description : '',
-    reviews : []
+    paid : ''
   };
   str='';
 
@@ -31,20 +31,20 @@ export class AddToiletComponent implements OnInit {
     this.model = {
       name : '',
       coordinates : {
-        lat : null,
-        lng : null
+        lat : 0,
+        lng : 0
       },
       adress : {
         street : '',
         city : ''
       },
       description : '',
-      reviews : []
+      paid : ''
     };
   }
 
   senditem() {
-    //this.toiletService.push(this.model);
+    this.toiletService.addToilet(this.model);
     this.newHero();
   }
 

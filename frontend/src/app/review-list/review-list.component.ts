@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Review } from '../review';
+import { StorageService } from '../storage.service';
 import { Toilet } from '../toilet';
 
 @Component({
@@ -12,7 +13,7 @@ export class ReviewListComponent implements OnInit {
   reviews: Review[] = [] ;
   id='';
 
-  constructor(private router:ActivatedRoute) {
+  constructor(private router:ActivatedRoute, private toiletService : StorageService) {
     this.id=this.router.snapshot.params['id'];
     this.toilets.forEach(e=>{
       if(e.id==this.id){
