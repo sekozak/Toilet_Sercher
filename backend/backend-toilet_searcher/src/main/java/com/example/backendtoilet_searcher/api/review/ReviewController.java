@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/reviews")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:4200")
 public class ReviewController {
@@ -26,6 +26,11 @@ public class ReviewController {
     @PostMapping()
     public Review createReview(@RequestBody ReviewRequest request){
         return reviewService.insertReview(request);
+    }
+
+    @DeleteMapping()
+    public void deleteReviews(){
+        reviewService.deleteReviews();
     }
 
 }

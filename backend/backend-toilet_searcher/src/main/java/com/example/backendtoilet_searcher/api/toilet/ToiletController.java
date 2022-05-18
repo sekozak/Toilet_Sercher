@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/toilet")
+@RequestMapping("/toilets")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:4200")
 public class ToiletController {
