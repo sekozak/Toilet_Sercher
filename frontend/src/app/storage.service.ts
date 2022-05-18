@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Toilet } from './toilet';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { firstValueFrom, Observable } from 'rxjs';
 import { ToiletReq } from './toiletReq';
 
 
@@ -19,9 +19,11 @@ export class StorageService{
     return this.http.get<Toilet[]>("http://localhost:8080/toilets");
   }
 
-  addToilet( t:ToiletReq ) {
-    this.http.post<ToiletReq>("http://localhost:8080/toilets", t);
+  async addToilet( t:ToiletReq ){
+    let headers = new HttpHeaders({"Content-Type": "application/json"})
+    let newToilet: Toilet = await firstValueFrom(this.http.post<Toilet>("http://localhost:8080/toilets", t, {headers}));
+    console.log("Toilet added!");
+    console.log(t);
+    console.log(newToilet);
   }
-
-  
 }

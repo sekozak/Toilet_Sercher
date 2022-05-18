@@ -15,14 +15,8 @@ import java.util.Date;
 
 @Data
 @Builder
-@Document("review")
 public class Review {
 
-    @Id
-    private String id;
-
-    @DocumentReference
-    private Toilet toilet;
     private String user;
     private String description;
     private LocalDateTime date;

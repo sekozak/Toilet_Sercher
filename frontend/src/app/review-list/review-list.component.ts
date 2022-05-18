@@ -34,7 +34,7 @@ export class ReviewListComponent implements OnInit {
       lat : 12,
       lng : 12
     },
-    adress : {
+    address : {
       street : 'szewska',
       city : 'krk'
     },
@@ -52,7 +52,7 @@ export class ReviewListComponent implements OnInit {
       lat : 12,
       lng : 12
     },
-    adress : {
+    address : {
       street : 'szewska',
       city : 'krk'
     },

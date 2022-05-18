@@ -28,7 +28,7 @@ public class Toilet {
     private Address address;
     private String description;
     private List<Review> reviews;
-    private List<Star> stars;
+    private Boolean paid;
 
     public void addReviewToToilet(Review review){
         this.reviews.add(review);

@@ -1,5 +1,6 @@
 package com.example.backendtoilet_searcher.domain.toilet;
 
+import com.example.backendtoilet_searcher.api.review.ReviewRequestDTO;
 import com.example.backendtoilet_searcher.api.toilet.ToiletRequestDTO;
 import com.example.backendtoilet_searcher.common.exception.AlreadyExistsException;
 import com.example.backendtoilet_searcher.common.exception.NotFoundException;
@@ -11,8 +12,10 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +27,8 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 public class ToiletService{
     private final ToiletRepository toiletRepository;
 
+    private final ReactiveToiletRepository reactiveToiletRepository;
+
     public List<Toilet> findAllToilets(){
             return toiletRepository.findAll();
     }
@@ -31,6 +36,13 @@ public class ToiletService{
     public Toilet findToiletById(String toiletId){
         return toiletRepository.findById(toiletId)
                 .orElseThrow(() -> new NotFoundException("toilet not found"));
+    }
+
+    public List<Review> getToiletReviews(String id){
+        return this.toiletRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("toilet not found"))
+                .getReviews();
     }
 
     public Toilet insertToilet(ToiletRequestDTO toiletRequestDTO){
@@ -41,7 +53,6 @@ public class ToiletService{
                 .address(toiletRequestDTO.getAddress())
                 .description(toiletRequestDTO.getDescription())
                 .reviews(new ArrayList<>())
-                .stars(new ArrayList<>())
                 .build();
 
         ExampleMatcher nameMatcher = ExampleMatcher.matching()
@@ -55,10 +66,21 @@ public class ToiletService{
         }else{
             return this.toiletRepository.insert(toilet);
         }
-//        return this.toiletRepository.insert(toilet);
     }
 
-    public Toilet updateToilet(Toilet toilet){
-        return this.toiletRepository.save(toilet);
+    public Mono<Toilet> insertReview(String id, ReviewRequestDTO reviewRequest){
+        Review review = Review.builder()
+                .user(reviewRequest.getUsername())
+                .date(LocalDateTime.now())
+                .description(reviewRequest.getDescription())
+                .build();
+
+        return this.reactiveToiletRepository
+                .findById(id)
+                .map(toilet -> {
+                    toilet.addReviewToToilet(review);
+                    return toilet;
+                })
+                .flatMap(this.reactiveToiletRepository::save);
     }
 }

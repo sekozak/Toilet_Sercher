@@ -13,7 +13,7 @@ export class AddToiletComponent implements OnInit {
       lat : 0,
       lng : 0
     },
-    adress : {
+    address : {
       street : '',
       city : ''
     },
@@ -34,7 +34,7 @@ export class AddToiletComponent implements OnInit {
         lat : 0,
         lng : 0
       },
-      adress : {
+      address : {
         street : '',
         city : ''
       },

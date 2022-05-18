@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 public class ReviewRequestDTO {
 
-    private String toiletId;
     private String username;
     private String description;
 }
