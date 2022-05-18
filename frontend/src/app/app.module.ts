@@ -13,6 +13,7 @@ import { ToiletsComponent } from './toilets/toilets.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { AddToiletComponent } from './add-toilet/add-toilet.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UndermapListComponent } from './undermap-list/undermap-list.component';
 
 
 
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     ToiletsComponent,
     AddReviewComponent,
     AddToiletComponent,
+    UndermapListComponent,
   ],
   imports: [
     BrowserModule,

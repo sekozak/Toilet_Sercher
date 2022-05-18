@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Toilet } from './toilet';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ToiletReq } from './toiletReq';
 
 
 @Injectable({
@@ -15,7 +16,11 @@ export class StorageService{
   }
 
   getToilets() : Observable<Toilet[]>{
-    return this.http.get<Toilet[]>("http://localhost:4200/toilet");
+    return this.http.get<Toilet[]>("http://localhost:8080/toilets");
+  }
+
+  addToilet( t:ToiletReq ) {
+    this.http.post<ToiletReq>("http://localhost:8080/toilets", t);
   }
 
   

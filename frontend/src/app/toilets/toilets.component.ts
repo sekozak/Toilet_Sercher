@@ -8,7 +8,7 @@ import { Toilet } from '../toilet';
   styleUrls: ['./toilets.component.css']
 })
 export class ToiletsComponent implements OnInit {
-  // public toiletList : Toilet[] = []
+  public toiletList : Toilet[] = []
   
   constructor(private toiletService : StorageService) { 
   
@@ -21,46 +21,46 @@ export class ToiletsComponent implements OnInit {
   }
 
 
-  public toiletList:Toilet[]=[{
-    id : 'fgvdgsd77',
-    name : 'bania',
-    coordinates : {
-      lat : 12,
-      lng : 12
-    },
-    adress : {
-      street : 'szewska',
-      city : 'krk'
-    },
-    description : 'parter, na koncu korytarza',
-    reviews : [{
-      username : 'kuba',
-      body : 'duze kolejki',
-      date : new Date()
-    }]
-  },
-  {
-    id : '77fgvdgsd',
-    name : 'bania2',
-    coordinates : {
-      lat : 12,
-      lng : 12
-    },
-    adress : {
-      street : 'szewska',
-      city : 'krk'
-    },
-    description : 'parter, na koncu korytarza',
-    reviews : [{
-      username : 'kubus',
-      body : 'duze kolejki',
-      date : new Date()
-    },
-    {
-      username : 'marcin',
-      body : 'masno ni',
-      date : new Date()
-    }]
-  }];
+  // public toiletList:Toilet[]=[{
+  //   id : 'fgvdgsd77',
+  //   name : 'bania',
+  //   coordinates : {
+  //     lat : 12,
+  //     lng : 12
+  //   },
+  //   adress : {
+  //     street : 'szewska',
+  //     city : 'krk'
+  //   },
+  //   description : 'parter, na koncu korytarza',
+  //   reviews : [{
+  //     username : 'kuba',
+  //     body : 'duze kolejki',
+  //     date : new Date()
+  //   }]
+  // },
+  // {
+  //   id : '77fgvdgsd',
+  //   name : 'bania2',
+  //   coordinates : {
+  //     lat : 12,
+  //     lng : 12
+  //   },
+  //   adress : {
+  //     street : 'szewska',
+  //     city : 'krk'
+  //   },
+  //   description : 'parter, na koncu korytarza',
+  //   reviews : [{
+  //     username : 'kubus',
+  //     body : 'duze kolejki',
+  //     date : new Date()
+  //   },
+  //   {
+  //     username : 'marcin',
+  //     body : 'masno ni',
+  //     date : new Date()
+  //   }]
+  // }];
 
 }

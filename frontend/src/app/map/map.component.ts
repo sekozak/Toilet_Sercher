@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LeafletMouseEvent } from 'leaflet';
 import 'leaflet-routing-machine';
+import { StorageService } from '../storage.service';
+import { Toilet } from '../toilet';
 //import { gzipSync } from 'zlib';
 
 declare const L: any;
@@ -11,23 +13,24 @@ declare const L: any;
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  public toiletList : Toilet[] = []
   title = 'sks';
 
-  constructor() {}
-
+  constructor(private toiletService : StorageService) { }
 
   ngOnInit() {
-    if(!navigator.geolocation) {
-      console.log('location is not supported');
+    this.toiletService.getToilets().subscribe(data => {
+      this.toiletList = data;
+      this.initMap();
+    })
+  }
 
-    }
+  public target:number[]=[0,0];
+  initMap(){
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
-      const gps = [coords.latitude, coords.longitude];
+      let gps = [coords.latitude, coords.longitude];
 
-      console.log(
-        'lat: ${position.coords.latitude}, lng: ${position.coords.longitude}'
-      );
       let map = L.map('map').setView(gps, 13);
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -47,12 +50,14 @@ export class MapComponent implements OnInit {
       });
 
       let marker = L.marker(gps,{icon: redIcon}).addTo(map); //markery
-      let marke2r = L.marker([50.0792, 19.949]).on('click', onClick);
-      let marke3r = L.marker([50.0592, 19.999]).on('click', onClick);
-      marke2r.addTo(map);
-      marke3r.addTo(map);
-      // let markerDB =  L.marker([t.lat, t.lng]).on('click', onClick);
-      // markerDB.addTo(map);  
+      marker.bindPopup('<b>You!</>').openPopup();
+
+      this.toiletList.forEach(t => {
+        let marke2r = L.marker([t.coordinates.lat, t.coordinates.lng]).on('click', onClick);
+        console.log(t.coordinates.lat, t.coordinates.lng);
+        marke2r.bindPopup(t.name).openPopup();
+        marke2r.addTo(map);
+      })
 
       let route: any;
       function onClick(e: { latlng: any; }){
@@ -72,17 +77,39 @@ export class MapComponent implements OnInit {
             ]
           }).addTo(map);
       }
-      map.on('click', (i:LeafletMouseEvent)=>{
-        map.removeControl(route);
-      })
+    
+    //   if(this.target!=[0,0]){
+    //     if(route!=null) {map.removeControl(route);}
+    //   route = L.Routing.control({
+    //     router: L.Routing.osrmv1({
+    //       serviceUrl: `http://router.project-osrm.org/route/v1/`
+    //     }),
+    //     showAlternatives: true,
+    //     lineOptions: {styles: [{color: '#242c81', weight: 7}]},
+    //     fitSelectedRoutes: false,
+    //     altLineOptions: {styles: [{color: '#ed6852', weight: 7}]},
+    //     routeWhileDragging: false,
+    //     waypoints: [
+    //       L.latLng(gps),
+    //       L.latLng(this.target)
+    //     ]
+    //   }).addTo(map);
+    //  }
 
-      marker.bindPopup('<b>You!</>').openPopup();
+    map.on('click', (i:LeafletMouseEvent)=>{
+      map.removeControl(route);
+    })
+
     });
+    
     this.watchPosition();
   }
 
+  update(t:number[]){
+      this.target=t;
+      this.initMap();  
+  }
   
-
   watchPosition() {
     let aimLat = 0;
     let aimLng = 0;
