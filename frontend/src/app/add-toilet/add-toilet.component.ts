@@ -18,7 +18,7 @@ export class AddToiletComponent implements OnInit {
       city : ''
     },
     description : '',
-    paid : ''
+    paid : false
   };
   str='';
 
@@ -39,10 +39,15 @@ export class AddToiletComponent implements OnInit {
         city : ''
       },
       description : '',
-      paid : ''
+      paid : false
     };
   }
 
+  check(){
+    const checkbox = document.getElementById('paid', ) as HTMLInputElement;   
+    this.model.paid=checkbox.checked;
+  }
+  
   senditem() {
     this.toiletService.addToilet(this.model);
     this.newHero();

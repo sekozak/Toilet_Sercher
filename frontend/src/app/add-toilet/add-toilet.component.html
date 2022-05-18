@@ -60,7 +60,7 @@
 
         <div class="paidbox">
           <span>Paid:</span>
-          <input type="checkbox" id="paid" name="paid" value="True" checked>
+          <input type="checkbox" id="paid" name="paid" (click)="check()" value="False" checked>
         </div>
 
         <button type="button" class="btn btn-default" [disabled]="!heroForm.form.valid" (click)="senditem(); newHero(); heroForm.reset()">Dodaj</button>

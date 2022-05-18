@@ -1,7 +1,6 @@
 
 export interface Review {
-    toiletId? : string,
-    username : string,
-    body : string,
+    user : string,
+    description : string,
     date : Date
 }

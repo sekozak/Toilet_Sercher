@@ -1,11 +1,11 @@
 
 .logo{
-    font-size: 8vw;
+    font-size: 100px;
     font-weight: bold;
     width: fit-content;
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 120px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     cursor: default;
     color: rgb(176, 222, 214);
     -webkit-box-reflect: below 0px linear-gradient(transparent,rgba(0, 0, 0, 0.116));
@@ -36,7 +36,6 @@ h4{
 
 #map {
     height: 60vh;
-    width: 95vh;
     margin: auto
   }
 .formBlock {
@@ -65,5 +64,5 @@ h4{
 
 
 app-undermap-list{
-    margin: 30px;
+    margin: 50px;
 }

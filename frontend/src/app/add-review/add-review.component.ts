@@ -19,13 +19,13 @@ export class AddReviewComponent implements OnInit {
 
   model ={
     username : '',
-    body : ''
+    description : ''
   };
 
   newHero() {
     this.model = {
       username : '',
-      body : ''
+      description : ''
     };
   }
 

@@ -22,6 +22,9 @@ export class MapComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       MapComponent.gps = [position.coords.latitude, position.coords.longitude];
       MapComponent.map = L.map('map').setView(MapComponent.gps, 13);
+      MapComponent.map.on('click', (i:LeafletMouseEvent)=>{
+        if(MapComponent.route!=null) MapComponent.map.removeControl(MapComponent.route);
+      });
     })
    }
 
@@ -77,11 +80,6 @@ export class MapComponent implements OnInit {
         marke2r.bindPopup(t.name).openPopup();
         marke2r.addTo(MapComponent.map);
       })
-
-
-     MapComponent.map.on('click', (i:LeafletMouseEvent)=>{
-      MapComponent.map.removeControl(MapComponent.route);
-    });
     
     this.watchPosition();
   }

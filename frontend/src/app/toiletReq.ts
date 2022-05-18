@@ -6,5 +6,5 @@ export interface ToiletReq{
     coordinates : Coordinate,
     adress : Adress,
     description : string,
-    paid? : string
+    paid? : boolean
 }
