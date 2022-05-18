@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Coordinate } from '../coordiante';
 import { StorageService } from '../storage.service';
 import { Toilet } from '../toilet';
 
@@ -8,11 +9,15 @@ import { Toilet } from '../toilet';
   styleUrls: ['./undermap-list.component.css']
 })
 export class UndermapListComponent implements OnInit {
-  public toiletList : Toilet[] = []
-  
-  constructor(private toiletService : StorageService) { 
-  
+  @Output() messageEvent = new EventEmitter<number[]>();
+
+  sendMessage(i:number){
+    let cord=[this.toiletList[i].coordinates.lat, this.toiletList[i].coordinates.lng];
+    this.messageEvent.emit(cord);
   }
+
+  public toiletList : Toilet[] = []
+  constructor(private toiletService : StorageService) { }
 
   ngOnInit(): void {
     this.toiletService.getToilets().subscribe(data => {

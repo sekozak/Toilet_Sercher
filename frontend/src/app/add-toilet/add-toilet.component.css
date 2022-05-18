@@ -82,3 +82,19 @@ button{
   width: 200px;
   height: 100px;
 }
+.paidbox span{
+  color: white;
+  font-size: 20px;
+  border: solid 1px blue;
+  width: fit-content;
+}
+.paidbox input{
+  border: solid 1px green;
+  width: 25px;
+}
+.paidbox{
+  align-items: center;
+  display: grid;
+  grid-column: auto auto;
+  border: solid 1px red;
+}

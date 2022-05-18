@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from '../storage.service';
-import { Toilet } from '../toilet';
 
 @Component({
   selector: 'app-add-review',
@@ -20,20 +19,19 @@ export class AddReviewComponent implements OnInit {
 
   model ={
     username : '',
-    body : '',
-    date : new Date()
+    body : ''
   };
 
   newHero() {
     this.model = {
       username : '',
-      body : '',
-      date : new Date()
+      body : ''
     };
   }
 
   senditem() {
-    // this.reviewStorage.pushReview(this.card,this.model);
+    this.toiletService.addReview(this.model, this.id);
+    this.newHero();
    }
 
 }
