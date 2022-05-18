@@ -1,14 +1,13 @@
 package com.example.backendtoilet_searcher.domain.review;
 
-import com.example.backendtoilet_searcher.api.review.dto.ReviewRequest;
+import com.example.backendtoilet_searcher.api.review.ReviewRequestDTO;
 import com.example.backendtoilet_searcher.domain.toilet.Toilet;
 import com.example.backendtoilet_searcher.domain.toilet.ToiletService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +20,7 @@ public class ReviewService {
         return this.reviewRepository.findAll();
     }
 
-    public Review insertReview(ReviewRequest reviewRequest){
+    public Review insertReview(ReviewRequestDTO reviewRequest){
         Toilet toilet = this.toiletService.findToiletById(reviewRequest.getToiletId());
         Review review = Review.builder()
                 .toilet(toilet)
@@ -37,5 +36,8 @@ public class ReviewService {
         this.reviewRepository.deleteAll();
     }
 
-
+    // TODO
+    public List<Review> getReviewsByToiletId(String toiletId) {
+        return new ArrayList<>();
+    }
 }

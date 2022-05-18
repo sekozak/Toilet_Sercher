@@ -1,11 +1,7 @@
 package com.example.backendtoilet_searcher.api.review;
 
-import com.example.backendtoilet_searcher.api.review.dto.ReviewRequest;
 import com.example.backendtoilet_searcher.domain.review.Review;
-import com.example.backendtoilet_searcher.domain.review.ReviewRepository;
 import com.example.backendtoilet_searcher.domain.review.ReviewService;
-import com.example.backendtoilet_searcher.domain.toilet.Toilet;
-import com.example.backendtoilet_searcher.domain.toilet.ToiletRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +20,7 @@ public class ReviewController {
     }
 
     @PostMapping()
-    public Review createReview(@RequestBody ReviewRequest request){
+    public Review createReview(@RequestBody ReviewRequestDTO request){
         return reviewService.insertReview(request);
     }
 
