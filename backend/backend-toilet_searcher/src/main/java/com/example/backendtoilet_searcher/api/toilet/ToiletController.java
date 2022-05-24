@@ -79,4 +79,9 @@ public class ToiletController {
     public void deleteToilet(){
         this.toiletService.deleteAllToilets();
     }
+
+    @PatchMapping("/{id}")
+    public Toilet updateToilet(@RequestBody ToiletRequestDTO request, @PathVariable("id") String id){
+        return this.toiletService.updateToilet(request, id);
+    }
 }

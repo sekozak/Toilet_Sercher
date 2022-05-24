@@ -91,4 +91,25 @@ public class ToiletService{
     public void deleteAllToilets(){
         this.toiletRepository.deleteAll();
     }
+
+    public Toilet updateToilet(ToiletRequestDTO req, String id){
+        Toilet toilet = this.toiletRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("Toilet not found"));
+
+        if(req.getName() != null){
+            toilet.setName(req.getName());
+        }
+        if (req.getDescription() != null){
+            toilet.setDescription(req.getDescription());
+        }
+        if(req.getAddress() != null){
+            toilet.setAddress(req.getAddress());
+        }
+        if(req.getPaid() != null){
+            toilet.setPaid(req.getPaid());
+        }
+
+        return this.toiletRepository.save(toilet);
+    }
 }
