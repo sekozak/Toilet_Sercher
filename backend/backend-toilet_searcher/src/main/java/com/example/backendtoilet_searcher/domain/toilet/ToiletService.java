@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.mongodb.util.BsonUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -53,13 +54,12 @@ public class ToiletService{
                 .address(toiletRequestDTO.getAddress())
                 .description(toiletRequestDTO.getDescription())
                 .reviews(new ArrayList<>())
+                .paid(toiletRequestDTO.getPaid())
                 .build();
 
-        ExampleMatcher nameMatcher = ExampleMatcher.matching()
-                .withMatcher("name", ignoreCase());
 
-        Example<Toilet> example = Example.of(toilet, nameMatcher);
-        boolean exists = this.toiletRepository.exists(example);
+        Boolean exists = this.toiletRepository.existsToiletByName(toiletRequestDTO.getName());
+
         if(exists){
             System.out.println("toilet already exists");
             throw new AlreadyExistsException("toilet already exists");
@@ -82,5 +82,13 @@ public class ToiletService{
                     return toilet;
                 })
                 .flatMap(this.reactiveToiletRepository::save);
+    }
+
+    public void deleteToilet(String id){
+        this.toiletRepository.deleteById(id);
+    }
+
+    public void deleteAllToilets(){
+        this.toiletRepository.deleteAll();
     }
 }

@@ -70,4 +70,13 @@ public class ToiletController {
         return this.toiletService.insertReview(id,request).toFuture();
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteToilet(@PathVariable("id") String id){
+        this.toiletService.deleteToilet(id);
+    }
+
+    @DeleteMapping()
+    public void deleteToilet(){
+        this.toiletService.deleteAllToilets();
+    }
 }

@@ -13,12 +13,12 @@ export class AddToiletComponent implements OnInit {
       lat : 0,
       lng : 0
     },
-    adress : {
+    address : {
       street : '',
       city : ''
     },
     description : '',
-    paid : false
+    paid : true
   };
   str='';
 
@@ -34,12 +34,12 @@ export class AddToiletComponent implements OnInit {
         lat : 0,
         lng : 0
       },
-      adress : {
+      address : {
         street : '',
         city : ''
       },
       description : '',
-      paid : false
+      paid : true
     };
   }
 

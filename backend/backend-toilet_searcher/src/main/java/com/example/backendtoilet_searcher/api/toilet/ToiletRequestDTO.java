@@ -12,4 +12,5 @@ public class ToiletRequestDTO {
     private Coordinates coordinates;
     private Address address;
     private String description;
+    private Boolean paid;
 }

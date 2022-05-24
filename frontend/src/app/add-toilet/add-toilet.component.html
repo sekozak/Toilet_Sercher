@@ -1,69 +1,45 @@
 <div class="container">
     <h1>New TOILET</h1>
     <div class="glass">
-      <form #heroForm="ngForm">
+        <form #heroForm="ngForm">
 
-        <div class="form-group">
-          <input type="text" class="form-control" id="name" placeholder=" "
-                 required
-                 [(ngModel)]="model.name" name="name"
-                 #name="ngModel"
-                 pattern="[a-zA-Z ]*">
-          <label for="name">Name</label>
-        </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder=" " required [(ngModel)]="model.name" name="name" #name="ngModel" pattern="[a-zA-Z ]*">
+                <label for="name">Name</label>
+            </div>
 
-        <div class="form-group">
-          <input type="street" class="form-control" id="street" placeholder=" "
-                  required
-                  [(ngModel)]="model.adress.street" name="street"
-                  #street="ngModel"
-                  pattern="[a-zA-Z ]*">
-          <label for="street">Street</label>
-        </div>
+            <div class="form-group">
+                <input type="street" class="form-control" id="street" placeholder=" " required [(ngModel)]="model.address.street" name="street" #street="ngModel" pattern="[a-zA-Z ]*">
+                <label for="street">Street</label>
+            </div>
 
-        <div class="form-group">
-          <input type="city" class="form-control" id="city" placeholder=" "
-                  required
-                  [(ngModel)]="model.adress.city" name="city"
-                  #city="ngModel"
-                  pattern="[a-zA-Z ]*">
-          <label for="city">City</label>
-        </div>
+            <div class="form-group">
+                <input type="city" class="form-control" id="city" placeholder=" " required [(ngModel)]="model.address.city" name="city" #city="ngModel" pattern="[a-zA-Z ]*">
+                <label for="city">City</label>
+            </div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" id="lat" placeholder=" "
-                  required
-                  [(ngModel)]="model.coordinates.lat" name="lat"
-                  #lat="ngModel"
-                  pattern="([1-9]|[1-9][0-9]|[1-9][,.][0-9][0-9]|[1-9][,.][0-9]|[0-9][,.][0-9][1-9]|[0-9][,.][1-9]|[0-9][,.][1-9][0-9])">
-          <label for="lat">Lat</label>
-        </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="lat" placeholder=" " required [(ngModel)]="model.coordinates.lat" name="lat" #lat="ngModel" pattern="([-][1-9][0-7][0,9][.][0-9]*|[-][1-9][0-9][.][0-9]*|[-][1-9][.][0-9]*|[1-9][0-7][0,9][.][0-9]*|[1-9][0-9][.][0-9]*|[1-9][.][0-9]*)">
+                <label for="lat">Lat</label>
+            </div>
 
-        <div class="form-group">
-          <input type="lng" class="form-control" id="lng" placeholder=" "
-                  required
-                  [(ngModel)]="model.coordinates.lng" name="lng"
-                  #lng="ngModel"
-                  pattern="([1-9]|[1-9][0-9]|[1-9][,.][0-9][0-9]|[1-9][,.][0-9]|[0-9][,.][0-9][1-9]|[0-9][,.][1-9]|[0-9][,.][1-9][0-9])" >
-          <label for="lng">Lng</label>
-        </div>
+            <div class="form-group">
+                <input type="lng" class="form-control" id="lng" placeholder=" " required [(ngModel)]="model.coordinates.lng" name="lng" #lng="ngModel" pattern="([-][1-9][0-7][0,9][.][0-9]*|[-][1-9][0-9][.][0-9]*|[-][1-9][.][0-9]*|[1-9][0-7][0,9][.][0-9]*|[1-9][0-9][.][0-9]*|[1-9][.][0-9]*)">
+                <label for="lng">Lng</label>
+            </div>
 
-        <div class="form-group">
-          <textarea type="text" class="form-control" id="description" placeholder=" "
-                  required
-                  [(ngModel)]="model.description" name="description"
-                  #description="ngModel"
-                  minlength="5">
+            <div class="form-group">
+                <textarea type="text" class="form-control" id="description" placeholder=" " required [(ngModel)]="model.description" name="description" #description="ngModel" minlength="5">
           </textarea>
-          <label for="description">Description</label>
-        </div>
+                <label for="description">Description</label>
+            </div>
 
-        <div class="paidbox">
-          <span>Paid:</span>
-          <input type="checkbox" id="paid" name="paid" (click)="check()" value="False" checked>
-        </div>
+            <div class="paidbox">
+                <span>Paid:</span>
+                <input type="checkbox" id="paid" name="paid" (click)="check()" value="False" checked>
+            </div>
 
-        <button type="button" class="btn btn-default" [disabled]="!heroForm.form.valid" (click)="senditem(); newHero(); heroForm.reset()">Dodaj</button>
-      </form>
+            <button type="button" class="btn btn-default" [disabled]="!heroForm.form.valid" (click)="senditem(); newHero(); heroForm.reset()">Dodaj</button>
+        </form>
     </div>
 </div>

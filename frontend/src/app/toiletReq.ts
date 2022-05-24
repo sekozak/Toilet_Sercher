@@ -1,10 +1,10 @@
-import { Adress } from "./adress";
+import { Address } from "./address";
 import { Coordinate } from "./coordiante";
 
 export interface ToiletReq{
     name : string,
     coordinates : Coordinate,
-    adress : Adress,
+    address : Address,
     description : string,
     paid? : boolean
 }
