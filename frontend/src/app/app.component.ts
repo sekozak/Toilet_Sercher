@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { StorageService } from './storage.service';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { StorageService } from './storage.service';
 })
 export class AppComponent {
 
-  constructor(private storage:StorageService){}
+  constructor(){}
 
   menuOpen = false;
   toogle(){
@@ -19,6 +18,5 @@ export class AppComponent {
       this.menuOpen = false;
     }
   }
-
 
 }

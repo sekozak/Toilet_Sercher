@@ -2,9 +2,11 @@
     color: white;
 }
 
-h5{
-    height: 90px;
-    line-height: 90px
+.txt{
+    min-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
 }
 
 .track{

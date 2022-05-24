@@ -9,16 +9,16 @@
           <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Distance</th>
-            <th scope="col">Cost</th>
+            <th scope="col">Info</th>
+            <th scope="col">Paid</th>
             <th scope="col">Track</th>
           </tr>
           </thead>
         <tbody id="myTable">
           <tr *ngFor="let t of toiletList; let i=index">
-            <td><h5>{{t.name}}</h5></td>
-            <td><h5>testDistance</h5></td>
-            <td><h5>{{t.paid}}</h5></td>
+            <td><div class="txt">{{t.name}}</div></td>
+            <td><div class="txt">{{t.description}}</div></td>
+            <td><div class="txt">{{t.paid}}</div></td>
             <td><div class="track" (click)="sendMessage(i)">🧭</div></td>
           </tr>
         </tbody>

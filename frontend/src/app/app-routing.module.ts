@@ -8,7 +8,7 @@ import { ToiletsComponent } from './toilets/toilets.component';
 
 
 const routes: Routes = [{ path: 'map', component: MapComponent }, 
-{ path: 'menu', component: ToiletsComponent }, 
+{ path: 'toiletList', component: ToiletsComponent }, 
 { path: 'add-toilet-review/:id', component: AddReviewComponent },
 { path: 'toilet-reviews/:id', component: ReviewListComponent },
 { path: 'add-toilet', component: AddToiletComponent },

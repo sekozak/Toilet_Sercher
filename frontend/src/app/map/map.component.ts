@@ -29,6 +29,7 @@ export class MapComponent implements OnInit {
    }
 
   ngOnInit() {
+    // window.location.reload();
     this.toiletService.getToilets().subscribe(data => {
       this.toiletList = data;
       this.initMap();
@@ -120,6 +121,7 @@ export class MapComponent implements OnInit {
         }
     },(err) => {
       console.log(err);
+      window.location.reload();
       },{
       enableHighAccuracy: true,
       timeout: 5000,
