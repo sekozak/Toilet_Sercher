@@ -11,3 +11,5 @@ Technology:
 
 Description:
  - Web application for finding and reporting public toilets.
+
+<img src="homePage.png"/>
