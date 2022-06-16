@@ -1,15 +1,17 @@
 # Database-Project-AGH-UST
-Authors: Jakub Łubkowski, Szymon Słota, Sebastian Kozak
 
-Topic: 
+<img src="homePage.png"/>
+
+## Topic: 
  - Toilet searcher
 
-Technology:
+## Technology:
  - database: Atlas (MongoDb)
  - backend: Spring (Java)
  - frontend: Angular (TypeScript)
 
-Description:
+## Description:
  - Web application for finding and reporting public toilets.
 
-<img src="homePage.png"/>
+
+Authors: Jakub Łubkowski, Szymon Słota, Sebastian Kozak
